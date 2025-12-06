@@ -433,63 +433,63 @@
                 <div class="swiper-slide food-slide">
                     <div class="food-photo-container animate-on-scroll">
                         <img class="food-photo" src="eat 1.jpg" alt="Món ăn 1">
-                        <div style="font-size: 1.2em; font-weight: 700; color: white;">1. Ăn cùng nhau. 🍴</div>
+                        <div class="caption" style="font-size: 1.2em; font-weight: 700; color: white; background: none;">1. Ăn cùng nhau. 🍴</div>
                     </div>
                 </div>
                 
                 <div class="swiper-slide food-slide">
                     <div class="food-photo-container animate-on-scroll">
                         <img class="food-photo" src="eat 2.jpg" alt="Món ăn 2">
-                        <div style="font-size: 1.2em; font-weight: 700; color: white;">2. Ăn cùng nhau. 🍕</div>
+                        <div class="caption" style="font-size: 1.2em; font-weight: 700; color: white; background: none;">2. Ăn cùng nhau. 🍕</div>
                     </div>
                 </div>
                 
                 <div class="swiper-slide food-slide">
                     <div class="food-photo-container animate-on-scroll">
                         <img class="food-photo" src="eat 3.jpg" alt="Món ăn 3">
-                        <div style="font-size: 1.2em; font-weight: 700; color: white;">3. Ăn cùng nhau. 🍜</div>
+                        <div class="caption" style="font-size: 1.2em; font-weight: 700; color: white; background: none;">3. Ăn cùng nhau. 🍜</div>
                     </div>
                 </div>
                 
                 <div class="swiper-slide food-slide">
                     <div class="food-photo-container animate-on-scroll">
                         <img class="food-photo" src="eat 4.jpg" alt="Món ăn 4">
-                        <div style="font-size: 1.2em; font-weight: 700; color: white;">4. Ăn cùng nhau. 🍔</div>
+                        <div class="caption" style="font-size: 1.2em; font-weight: 700; color: white; background: none;">4. Ăn cùng nhau. 🍔</div>
                     </div>
                 </div>
 
                 <div class="swiper-slide food-slide">
                     <div class="food-photo-container animate-on-scroll">
                         <img class="food-photo" src="eat 5.jpg" alt="Món ăn 5">
-                        <div style="font-size: 1.2em; font-weight: 700; color: white;">5. Ăn cùng nhau. 🍣</div>
+                        <div class="caption" style="font-size: 1.2em; font-weight: 700; color: white; background: none;">5. Ăn cùng nhau. 🍣</div>
                     </div>
                 </div>
 
                 <div class="swiper-slide food-slide">
                     <div class="food-photo-container animate-on-scroll">
                         <img class="food-photo" src="eat 6.jpg" alt="Món ăn 6">
-                        <div style="font-size: 1.2em; font-weight: 700; color: white;">6. Ăn cùng nhau. 🍹</div>
+                        <div class="caption" style="font-size: 1.2em; font-weight: 700; color: white; background: none;">6. Ăn cùng nhau. 🍹</div>
                     </div>
                 </div>
 
                 <div class="swiper-slide food-slide">
                     <div class="food-photo-container animate-on-scroll">
                         <img class="food-photo" src="eat 7.jpg" alt="Món ăn 7">
-                        <div style="font-size: 1.2em; font-weight: 700; color: white;">7. Ăn cùng nhau. 🥞</div>
+                        <div class="caption" style="font-size: 1.2em; font-weight: 700; color: white; background: none;">7. Ăn cùng nhau. 🥞</div>
                     </div>
                 </div>
 
                 <div class="swiper-slide food-slide">
                     <div class="food-photo-container animate-on-scroll">
                         <img class="food-photo" src="eat 8.jpg" alt="Món ăn 8">
-                        <div style="font-size: 1.2em; font-weight: 700; color: white;">8. Ăn cùng nhau. 🍰</div>
+                        <div class="caption" style="font-size: 1.2em; font-weight: 700; color: white; background: none;">8. Ăn cùng nhau. 🍰</div>
                     </div>
                 </div>
 
                 <div class="swiper-slide food-slide">
                     <div class="food-photo-container animate-on-scroll">
                         <img class="food-photo" src="eat 9.jpg" alt="Món ăn 9">
-                        <div style="font-size: 1.2em; font-weight: 700; color: white;">9. Ăn cùng nhau. 🌶️</div>
+                        <div class="caption" style="font-size: 1.2em; font-weight: 700; color: white; background: none;">9. Ăn cùng nhau. 🌶️</div>
                     </div>
                 </div>
 
@@ -518,116 +518,3 @@
         <div id="countdown-timer"></div>
         <p style="font-size: 1.5em; font-weight: 700; margin-top: 30px;">Tún và Na cùng nhau tạo thêm thật nhiều kỷ niệm đáng yêu nữa nhé! ❤️</p>
     </section>
-
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-
-    <script>
-        // =================================
-        // JavaScript: Hiệu ứng Cuộn & Đếm ngược & Nhạc & Swiper
-        // =================================
-
-        // 1. Khởi tạo Swiper (Vuốt ảnh)
-        document.addEventListener('DOMContentLoaded', () => {
-            // Swiper cho ảnh Kỷ niệm
-            var swiperJourney = new Swiper(".mySwiperJourney", {
-                slidesPerView: "auto", 
-                centeredSlides: true,
-                spaceBetween: 10,
-                pagination: {
-                    el: ".swiper-pagination",
-                    clickable: true,
-                },
-                navigation: {
-                    nextEl: ".swiper-button-next",
-                    prevEl: ".swiper-button-prev",
-                },
-                grabCursor: true, 
-            });
-
-            // Swiper cho ảnh Đồ ăn
-            var swiperFood = new Swiper(".mySwiperFood", {
-                slidesPerView: "auto",
-                centeredSlides: true,
-                spaceBetween: 10,
-                pagination: {
-                    el: ".swiper-pagination",
-                    clickable: true,
-                },
-                navigation: {
-                    nextEl: ".swiper-button-next",
-                    prevEl: ".swiper-button-prev",
-                },
-                grabCursor: true,
-            });
-
-
-            // 2. Hiệu ứng Animation On Scroll (AOS)
-            const elements = document.querySelectorAll('.animate-on-scroll');
-            
-            const observer = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('animate-in');
-                    }
-                });
-            }, {
-                threshold: 0.2 
-            });
-
-            elements.forEach(el => {
-                observer.observe(el);
-            });
-
-
-            // 3. Đồng Hồ Đếm Ngược (Countdown Timer)
-            function startCountdown() {
-                const birthdayDate = new Date("2025-12-17 00:00:00").getTime(); 
-
-                const interval = setInterval(function() {
-                    const now = new Date().getTime();
-                    const distance = birthdayDate - now;
-
-                    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-                    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-                    const timerElement = document.getElementById("countdown-timer");
-                    
-                    if (distance > 0) {
-                        timerElement.innerHTML = `${days} ngày, ${hours} giờ, ${minutes} phút, ${seconds} giây`;
-                    } else {
-                        clearInterval(interval);
-                        timerElement.innerHTML = "🎉 Happy Birthday! Na yêu Tún! 🎉";
-                    }
-                }, 1000);
-            }
-
-            startCountdown();
-
-            // 4. Xử lý Phát Nhạc
-            const music = document.getElementById('background-music');
-            const musicToggle = document.getElementById('music-toggle');
-            let isPlaying = false;
-
-            musicToggle.addEventListener('click', () => {
-                if (isPlaying) {
-                    music.pause();
-                    musicToggle.innerHTML = '<i class="fa-solid fa-volume-xmark"></i>';
-                    musicToggle.classList.remove('spin');
-                } else {
-                    music.play().catch(error => {
-                        console.error("Autoplay was prevented:", error);
-                        alert("Trình duyệt đã chặn tự động phát nhạc. Vui lòng bấm vào nút này lần nữa để bật nhạc!");
-                    });
-                    musicToggle.innerHTML = '<i class="fa-solid fa-music"></i>';
-                    musicToggle.classList.add('spin');
-                }
-                isPlaying = !isPlaying;
-            });
-        });
-
-    </script>
-
-</body>
-</html>
