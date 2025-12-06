@@ -22,11 +22,10 @@
         }
 
         html {
-            /* KÍCH HOẠT SCROLL SNAP CHO TOÀN TRANG */
             scroll-snap-type: y mandatory;
-            overflow-y: scroll; /* Cho phép cuộn */
+            overflow-y: scroll; 
             scroll-behavior: smooth;
-            height: 100%; /* Bắt buộc để snap hoạt động */
+            height: 100%; 
         }
 
         body {
@@ -40,7 +39,8 @@
                               radial-gradient(var(--primary-color) 1px, var(--bg-color) 1px);
             background-size: 20px 20px;
             background-position: 0 0, 10px 10px;
-            height: 100%; /* Bắt buộc */
+            height: 100%; 
+            overflow: hidden; 
         }
 
         h1, h2, h3 {
@@ -50,23 +50,64 @@
         }
 
         .section {
-            padding: 20px; /* Giảm padding để nội dung không bị đẩy quá xa */
+            padding: 20px; 
             text-align: center;
             position: relative;
-            /* QUAN TRỌNG: Thiết lập chiều cao và điểm dính */
-            height: 100vh; /* Chiếm trọn 1 màn hình */
+            height: 100vh; 
             width: 100%;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            scroll-snap-align: start; /* Điểm dừng khi cuộn */
-            scroll-snap-stop: always; /* Bắt buộc dừng lại, không cho cuộn vượt qua */
-            overflow: hidden; /* Ngăn nội dung tràn ra ngoài section */
+            scroll-snap-align: start; 
+            scroll-snap-stop: always; 
+        }
+
+        /* =================================
+           MÀN HÌNH CHÀO MỪNG (NEW)
+           ================================= */
+        #welcome-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--bg-color);
+            z-index: 9999; /* Luôn nằm trên cùng */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 1s ease, visibility 1s ease;
+        }
+
+        #welcome-overlay.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        .start-btn {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 24px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-family: 'Dancing Script', cursive;
+            box-shadow: 0 4px 15px rgba(255, 127, 80, 0.4);
+            animation: pulse-btn 2s infinite;
+        }
+
+        @keyframes pulse-btn {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 127, 80, 0.7); }
+            70% { transform: scale(1.1); box-shadow: 0 0 0 10px rgba(255, 127, 80, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 127, 80, 0); }
         }
         
         /* =================================
-           HIỆU ỨNG CÁNH HOA RƠI (NEW)
+           HIỆU ỨNG CÁNH HOA RƠI
            ================================= */
         .petals {
             position: fixed;
@@ -90,7 +131,6 @@
             animation: fall linear infinite;
         }
 
-        /* Tạo 10 cánh hoa ngẫu nhiên */
         .petal:nth-child(1) { left: 5%; animation-duration: 12s; animation-delay: 1s; }
         .petal:nth-child(2) { left: 15%; animation-duration: 10s; animation-delay: 3s; }
         .petal:nth-child(3) { left: 25%; animation-duration: 15s; animation-delay: 0s; }
@@ -114,7 +154,7 @@
         
         .swiper-container {
             width: 100%;
-            height: 100%; /* Chiếm hết chiều cao section */
+            height: 100%; 
             padding-bottom: 30px;
         }
 
@@ -133,16 +173,14 @@
             box-shadow: 5px 5px 0px var(--secondary-color);
             padding-bottom: 5px;
             position: relative;
-            width: 90vw !important; 
+            width: 95vw !important; 
             max-width: 400px;
-            /* Giới hạn chiều cao tối đa để không bị tràn trên màn hình nhỏ */
             max-height: 80vh; 
             transition: transform 0.5s ease;
             display: flex;
             flex-direction: column;
         }
         
-        /* Hiệu ứng nghiêng nhẹ cho card */
         .swiper-slide:nth-child(odd) .photo-card { transform: rotate(-2deg); }
         .swiper-slide:nth-child(even) .photo-card { transform: rotate(2deg); }
 
@@ -151,7 +189,6 @@
             z-index: 10;
         }
         
-        /* Băng dính (Tape Sticker) */
         .photo-card::before {
             content: '';
             position: absolute;
@@ -166,12 +203,9 @@
             z-index: 5;
         }
 
-        /* ẢNH BÊN TRONG KHUNG */
         .photo-card img {
             width: 100%;
-            /* Sử dụng flex-grow để ảnh chiếm phần lớn không gian còn lại */
             flex-grow: 1;
-            /* Chiều cao linh hoạt nhưng có giới hạn tối thiểu/tối đa */
             min-height: 300px;
             max-height: 550px; 
             object-fit: cover; 
@@ -186,14 +220,11 @@
             background: white;
             color: var(--text-color);
             font-weight: 700;
-            /* Đảm bảo caption không bị co quá nhỏ */
             flex-shrink: 0; 
         }
         
-        /* Tùy chỉnh thanh điều hướng Swiper */
         .swiper-button-next, .swiper-button-prev {
             color: var(--accent-color) !important;
-            
         }
         
         .swiper-pagination-bullet-active {
@@ -201,7 +232,7 @@
         }
         
         /* =================================
-           3. Phần Đồ Ăn (Sử dụng Khung Ảnh Kỷ Niệm)
+           3. Phần Đồ Ăn
            ================================= */
         
         .food-photo-container {
@@ -213,7 +244,6 @@
             justify-content: center;
         }
 
-        /* Áp dụng lại style nền cho phần Đồ ăn để đồng bộ */
         #food .photo-card {
             background-color: var(--bg-color); 
             border: 2px solid var(--accent-color);
@@ -228,7 +258,7 @@
         }
 
         /* =================================
-           4. Chung: Nhạc, Sticker, Đếm ngược
+           4. Chung: Nhạc, Sticker
            ================================= */
         
         /* Nút Phát Nhạc */
@@ -259,7 +289,7 @@
             from { transform: rotate(0deg); }
             to { transform: rotate(360deg); }
         }
-        /* Lớp Sticker trang trí */
+        
         .decoration-sticker {
             position: absolute;
             font-size: 40px;
@@ -278,7 +308,7 @@
         }
 
         /* =================================
-           5. SỬA ĐỊNH DẠNG CHO THƯ TÌNH
+           5. Định dạng thư tình
            ================================= */
         #message-box p {
             font-family: 'Dancing Script', cursive; 
@@ -293,19 +323,18 @@
 </head>
 <body>
 
-    <div class="petals">
-        <div class="petal"></div>
-        <div class="petal"></div>
-        <div class="petal"></div>
-        <div class="petal"></div>
-        <div class="petal"></div>
-        <div class="petal"></div>
-        <div class="petal"></div>
-        <div class="petal"></div>
-        <div class="petal"></div>
-        <div class="petal"></div>
+    <div id="welcome-overlay">
+        <h1 style="font-size: 3em; margin-bottom: 20px;">Bạn có một món quà! 🎁</h1>
+        <button class="start-btn" id="start-btn">Mở Quà Ngay</button>
+        <p style="margin-top: 10px; font-size: 0.9em; opacity: 0.8;">(Nhớ bật âm lượng nhé! 🔊)</p>
     </div>
 
+    <div class="petals">
+        <div class="petal"></div><div class="petal"></div><div class="petal"></div>
+        <div class="petal"></div><div class="petal"></div><div class="petal"></div>
+        <div class="petal"></div><div class="petal"></div><div class="petal"></div>
+        <div class="petal"></div>
+    </div>
 
     <audio id="background-music" loop>
         <source src="Nhac nen.mp3" type="audio/mp3"> 
@@ -334,115 +363,23 @@
 
     <section id="journey" class="section">
         <h2>✨ Góc Phép Màu – 15 Kỷ Niệm (Vuốt để xem!)</h2>
-        
         <div class="swiper-container mySwiperJourney">
             <div class="swiper-wrapper">
-                
-                <div class="swiper-slide">
-                    <div class="photo-card animate-on-scroll">
-                        <img src="anh 1.jpg" alt="Kỷ niệm 1">
-                        <div class="caption">1. Lần đầu Tún thấy Na! ❤️</div>
-                    </div>
-                </div>
-                
-                <div class="swiper-slide">
-                    <div class="photo-card animate-on-scroll">
-                        <img src="anh 2.jpg" alt="Kỷ niệm 2">
-                        <div class="caption">2. Hành trình mới yêu. 👩‍❤️‍👨</div>
-                    </div>
-                </div>
-                
-                <div class="swiper-slide">
-                    <div class="photo-card animate-on-scroll">
-                        <img src="anh 3.jpg" alt="Kỷ niệm 3">
-                        <div class="caption">3. Cùng nhau tạo nên kiệt tác. 🎨</div>
-                    </div>
-                </div>
-
-                <div class="swiper-slide">
-                    <div class="photo-card animate-on-scroll">
-                        <img src="anh 4.jpg" alt="Kỷ niệm 4">
-                        <div class="caption">4. Na rạng rỡ hơn cả hoa. 🌸</div>
-                    </div>
-                </div>
-                
-                <div class="swiper-slide">
-                    <div class="photo-card animate-on-scroll">
-                        <img src="anh 5.jpg" alt="Kỷ niệm 5">
-                        <div class="caption">5. Kỷ niệm quân sự đáng nhớ. 💂‍♀️</div>
-                    </div>
-                </div>
-
-                <div class="swiper-slide">
-                    <div class="photo-card animate-on-scroll">
-                        <img src="anh 6.jpg" alt="Kỷ niệm 6">
-                        <div class="caption">6. Shin đến nè. 📽️</div>
-                    </div>
-                </div>
-
-                <div class="swiper-slide">
-                    <div class="photo-card animate-on-scroll">
-                        <img src="anh 7.jpg" alt="Kỷ niệm 7">
-                        <div class="caption">7. Đi Second Home nè. 🏡</div>
-                    </div>
-                </div>
-
-                <div class="swiper-slide">
-                    <div class="photo-card animate-on-scroll">
-                        <img src="anh 8.jpg" alt="Kỷ niệm 8">
-                        <div class="caption">8. BigC và tủ gửi đồ. 📦</div>
-                    </div>
-                </div>
-                
-                <div class="swiper-slide">
-                    <div class="photo-card animate-on-scroll">
-                        <img src="anh 9.jpg" alt="Kỷ niệm 9">
-                        <div class="caption">9. Giải Cứu Nắng Hè Bằng Bingxu. 🍧</div>
-                    </div>
-                </div>
-                
-                <div class="swiper-slide">
-                    <div class="photo-card animate-on-scroll">
-                        <img src="anh 10.jpg" alt="Kỷ niệm 10">
-                        <div class="caption">10. Đi ăn bánh tráng cuốn thịt heo mí na nè. 🐷</div>
-                    </div>
-                </div>
-                
-                <div class="swiper-slide">
-                    <div class="photo-card animate-on-scroll">
-                        <img src="anh 11.jpg" alt="Kỷ niệm 11">
-                        <div class="caption">11. Chỉ cần có Na là vui rồi! 😊</div>
-                    </div>
-                </div>
-
-                <div class="swiper-slide">
-                    <div class="photo-card animate-on-scroll">
-                        <img src="anh 12.jpg" alt="Kỷ niệm 12">
-                        <div class="caption">12. Dọn phòng và chuyển trọ. 🚚</div>
-                    </div>
-                </div>
-
-                <div class="swiper-slide">
-                    <div class="photo-card animate-on-scroll">
-                        <img src="anh 13.jpg" alt="Kỷ niệm 13">
-                        <div class="caption">13. Vẫn Luôn Bên Nhau. ♾️</div>
-                    </div>
-                </div>
-
-                <div class="swiper-slide">
-                    <div class="photo-card animate-on-scroll">
-                        <img src="anh 14.jpg" alt="Kỷ niệm 14">
-                        <div class="caption">14. Album ảnh được Na tự tay tuyển chọn. 💖</div>
-                    </div>
-                </div>
-
-                <div class="swiper-slide">
-                    <div class="photo-card animate-on-scroll">
-                        <img src="anh 15.jpg" alt="Kỷ niệm 15">
-                        <div class="caption">15. Định Nghĩa Sự Đáng Yêu. ✨</div>
-                    </div>
-                </div>
-
+                <div class="swiper-slide"> <div class="photo-card animate-on-scroll"> <img src="anh 1.jpg" alt="Kỷ niệm 1"> <div class="caption">1. Lần đầu Tún thấy Na! ❤️</div> </div> </div>
+                <div class="swiper-slide"> <div class="photo-card animate-on-scroll"> <img src="anh 2.jpg" alt="Kỷ niệm 2"> <div class="caption">2. Hành trình mới yêu. 👩‍❤️‍👨</div> </div> </div>
+                <div class="swiper-slide"> <div class="photo-card animate-on-scroll"> <img src="anh 3.jpg" alt="Kỷ niệm 3"> <div class="caption">3. Cùng nhau tạo nên kiệt tác. 🎨</div> </div> </div>
+                <div class="swiper-slide"> <div class="photo-card animate-on-scroll"> <img src="anh 4.jpg" alt="Kỷ niệm 4"> <div class="caption">4. Na rạng rỡ hơn cả hoa. 🌸</div> </div> </div>
+                <div class="swiper-slide"> <div class="photo-card animate-on-scroll"> <img src="anh 5.jpg" alt="Kỷ niệm 5"> <div class="caption">5. Kỷ niệm quân sự đáng nhớ. 💂‍♀️</div> </div> </div>
+                <div class="swiper-slide"> <div class="photo-card animate-on-scroll"> <img src="anh 6.jpg" alt="Kỷ niệm 6"> <div class="caption">6. Shin đến nè. 📽️</div> </div> </div>
+                <div class="swiper-slide"> <div class="photo-card animate-on-scroll"> <img src="anh 7.jpg" alt="Kỷ niệm 7"> <div class="caption">7. Đi Second Home nè. 🏡</div> </div> </div>
+                <div class="swiper-slide"> <div class="photo-card animate-on-scroll"> <img src="anh 8.jpg" alt="Kỷ niệm 8"> <div class="caption">8. BigC và tủ gửi đồ. 📦</div> </div> </div>
+                <div class="swiper-slide"> <div class="photo-card animate-on-scroll"> <img src="anh 9.jpg" alt="Kỷ niệm 9"> <div class="caption">9. Giải Cứu Nắng Hè Bằng Bingxu. 🍧</div> </div> </div>
+                <div class="swiper-slide"> <div class="photo-card animate-on-scroll"> <img src="anh 10.jpg" alt="Kỷ niệm 10"> <div class="caption">10. Đi ăn bánh tráng cuốn thịt heo mí na nè. 🐷</div> </div> </div>
+                <div class="swiper-slide"> <div class="photo-card animate-on-scroll"> <img src="anh 11.jpg" alt="Kỷ niệm 11"> <div class="caption">11. Chỉ cần có Na là vui rồi! 😊</div> </div> </div>
+                <div class="swiper-slide"> <div class="photo-card animate-on-scroll"> <img src="anh 12.jpg" alt="Kỷ niệm 12"> <div class="caption">12. Dọn phòng và chuyển trọ. 🚚</div> </div> </div>
+                <div class="swiper-slide"> <div class="photo-card animate-on-scroll"> <img src="anh 13.jpg" alt="Kỷ niệm 13"> <div class="caption">13. Vẫn Luôn Bên Nhau. ♾️</div> </div> </div>
+                <div class="swiper-slide"> <div class="photo-card animate-on-scroll"> <img src="anh 14.jpg" alt="Kỷ niệm 14"> <div class="caption">14. Album ảnh được Na tự tay tuyển chọn. 💖</div> </div> </div>
+                <div class="swiper-slide"> <div class="photo-card animate-on-scroll"> <img src="anh 15.jpg" alt="Kỷ niệm 15"> <div class="caption">15. Định Nghĩa Sự Đáng Yêu. ✨</div> </div> </div>
             </div>
             <div class="swiper-button-next"></div>
             <div class="swiper-button-prev"></div>
@@ -452,91 +389,17 @@
 
     <section id="food" class="section" style="background-color: var(--secondary-color);">
         <h2>🍔 Tuyến Đường Dinh Dưỡng - 9 Lần Thử Món Mới (Vuốt để xem!)</h2>
-        
         <div class="swiper-container mySwiperFood">
             <div class="swiper-wrapper">
-                
-                <div class="swiper-slide food-slide">
-                    <div class="food-photo-container">
-                        <div class="photo-card animate-on-scroll">
-                            <img src="eat 1.jpg" alt="Món ăn 1">
-                            <div class="caption">1. Ăn cùng nhau. 🍴</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="swiper-slide food-slide">
-                    <div class="food-photo-container">
-                        <div class="photo-card animate-on-scroll">
-                            <img src="eat 2.jpg" alt="Món ăn 2">
-                            <div class="caption">2. Ăn cùng nhau. 🍕</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="swiper-slide food-slide">
-                    <div class="food-photo-container">
-                        <div class="photo-card animate-on-scroll">
-                            <img src="eat 3.jpg" alt="Món ăn 3">
-                            <div class="caption">3. Ăn cùng nhau. 🍜</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="swiper-slide food-slide">
-                    <div class="food-photo-container">
-                        <div class="photo-card animate-on-scroll">
-                            <img src="eat 4.jpg" alt="Món ăn 4">
-                            <div class="caption">4. Ăn cùng nhau. 🍔</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="swiper-slide food-slide">
-                    <div class="food-photo-container">
-                        <div class="photo-card animate-on-scroll">
-                            <img src="eat 5.jpg" alt="Món ăn 5">
-                            <div class="caption">5. Ăn cùng nhau. 🍣</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="swiper-slide food-slide">
-                    <div class="food-photo-container">
-                        <div class="photo-card animate-on-scroll">
-                            <img src="eat 6.jpg" alt="Món ăn 6">
-                            <div class="caption">6. Ăn cùng nhau. 🍹</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="swiper-slide food-slide">
-                    <div class="food-photo-container">
-                        <div class="photo-card animate-on-scroll">
-                            <img src="eat 7.jpg" alt="Món ăn 7">
-                            <div class="caption">7. Ăn cùng nhau. 🥞</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="swiper-slide food-slide">
-                    <div class="food-photo-container">
-                        <div class="photo-card animate-on-scroll">
-                            <img src="eat 8.jpg" alt="Món ăn 8">
-                            <div class="caption">8. Ăn cùng nhau. 🍰</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="swiper-slide food-slide">
-                    <div class="food-photo-container">
-                        <div class="photo-card animate-on-scroll">
-                            <img src="eat 9.jpg" alt="Món ăn 9">
-                            <div class="caption">9. Ăn cùng nhau. 🌶️</div>
-                        </div>
-                    </div>
-                </div>
-
+                <div class="swiper-slide food-slide"> <div class="food-photo-container"> <div class="photo-card animate-on-scroll"> <img src="eat 1.jpg" alt="Món ăn 1"> <div class="caption">1. Ăn cùng nhau. 🍴</div> </div> </div> </div>
+                <div class="swiper-slide food-slide"> <div class="food-photo-container"> <div class="photo-card animate-on-scroll"> <img src="eat 2.jpg" alt="Món ăn 2"> <div class="caption">2. Ăn cùng nhau. 🍕</div> </div> </div> </div>
+                <div class="swiper-slide food-slide"> <div class="food-photo-container"> <div class="photo-card animate-on-scroll"> <img src="eat 3.jpg" alt="Món ăn 3"> <div class="caption">3. Ăn cùng nhau. 🍜</div> </div> </div> </div>
+                <div class="swiper-slide food-slide"> <div class="food-photo-container"> <div class="photo-card animate-on-scroll"> <img src="eat 4.jpg" alt="Món ăn 4"> <div class="caption">4. Ăn cùng nhau. 🍔</div> </div> </div> </div>
+                <div class="swiper-slide food-slide"> <div class="food-photo-container"> <div class="photo-card animate-on-scroll"> <img src="eat 5.jpg" alt="Món ăn 5"> <div class="caption">5. Ăn cùng nhau. 🍣</div> </div> </div> </div>
+                <div class="swiper-slide food-slide"> <div class="food-photo-container"> <div class="photo-card animate-on-scroll"> <img src="eat 6.jpg" alt="Món ăn 6"> <div class="caption">6. Ăn cùng nhau. 🍹</div> </div> </div> </div>
+                <div class="swiper-slide food-slide"> <div class="food-photo-container"> <div class="photo-card animate-on-scroll"> <img src="eat 7.jpg" alt="Món ăn 7"> <div class="caption">7. Ăn cùng nhau. 🥞</div> </div> </div> </div>
+                <div class="swiper-slide food-slide"> <div class="food-photo-container"> <div class="photo-card animate-on-scroll"> <img src="eat 8.jpg" alt="Món ăn 8"> <div class="caption">8. Ăn cùng nhau. 🍰</div> </div> </div> </div>
+                <div class="swiper-slide food-slide"> <div class="food-photo-container"> <div class="photo-card animate-on-scroll"> <img src="eat 9.jpg" alt="Món ăn 9"> <div class="caption">9. Ăn cùng nhau. 🌶️</div> </div> </div> </div>
             </div>
             <div class="swiper-button-next"></div>
             <div class="swiper-button-prev"></div>
@@ -566,76 +429,76 @@
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
     <script>
-        // =================================
-        // JavaScript: Hiệu ứng Cuộn & Đếm ngược & Nhạc & Swiper
-        // =================================
+        // XỬ LÝ NÚT MỞ QUÀ VÀ NHẠC
+        const music = document.getElementById('background-music');
+        const startBtn = document.getElementById('start-btn');
+        const welcomeOverlay = document.getElementById('welcome-overlay');
+        const musicToggle = document.getElementById('music-toggle');
+        let isPlaying = false;
 
-        // 1. Khởi tạo Swiper (Vuốt ảnh)
+        startBtn.addEventListener('click', () => {
+            welcomeOverlay.classList.add('hidden'); // Ẩn màn hình chào
+            music.play().then(() => {
+                isPlaying = true;
+                musicToggle.innerHTML = '<i class="fa-solid fa-music"></i>';
+                musicToggle.classList.add('spin');
+            }).catch(error => {
+                console.log("Không thể tự động phát nhạc: ", error);
+            });
+        });
+
+        // Nút bật tắt nhạc thủ công
+        musicToggle.addEventListener('click', () => {
+            if (isPlaying) {
+                music.pause();
+                musicToggle.innerHTML = '<i class="fa-solid fa-volume-xmark"></i>';
+                musicToggle.classList.remove('spin');
+            } else {
+                music.play();
+                musicToggle.innerHTML = '<i class="fa-solid fa-music"></i>';
+                musicToggle.classList.add('spin');
+            }
+            isPlaying = !isPlaying;
+        });
+
+        // KHỞI TẠO SWIPER
         document.addEventListener('DOMContentLoaded', () => {
-            // Swiper cho ảnh Kỷ niệm
             var swiperJourney = new Swiper(".mySwiperJourney", {
-                slidesPerView: 1, // CHỈ HIỂN THỊ 1 ẢNH MỖI LẦN
-                centeredSlides: true,
-                spaceBetween: 10,
-                pagination: {
-                    el: ".swiper-pagination",
-                    clickable: true,
-                },
-                navigation: {
-                    nextEl: ".swiper-button-next",
-                    prevEl: ".swiper-button-prev",
-                },
+                slidesPerView: 1, centeredSlides: true, spaceBetween: 10,
+                pagination: { el: ".swiper-pagination", clickable: true },
+                navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
                 grabCursor: true, 
             });
 
-            // Swiper cho ảnh Đồ ăn
             var swiperFood = new Swiper(".mySwiperFood", {
-                slidesPerView: 1, // CHỈ HIỂN THỊ 1 ẢNH MỖI LẦN
-                centeredSlides: true,
-                spaceBetween: 10,
-                pagination: {
-                    el: ".swiper-pagination",
-                    clickable: true,
-                },
-                navigation: {
-                    nextEl: ".swiper-button-next",
-                    prevEl: ".swiper-button-prev",
-                },
+                slidesPerView: 1, centeredSlides: true, spaceBetween: 10,
+                pagination: { el: ".swiper-pagination", clickable: true },
+                navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
                 grabCursor: true,
             });
 
-
-            // 2. Hiệu ứng Animation On Scroll (AOS)
+            // Hiệu ứng Animation On Scroll
             const elements = document.querySelectorAll('.animate-on-scroll');
-            
-            const observer = new IntersectionObserver((entries, observer) => {
+            const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('animate-in');
                     }
                 });
-            }, {
-                threshold: 0.2 
-            });
+            }, { threshold: 0.2 });
 
-            elements.forEach(el => {
-                observer.observe(el);
-            });
+            elements.forEach(el => observer.observe(el));
 
-
-            // 3. Đồng Hồ Đếm Ngược (Countdown Timer)
+            // Đồng Hồ Đếm Ngược
             function startCountdown() {
                 const birthdayDate = new Date("2025-12-17 00:00:00").getTime(); 
-
                 const interval = setInterval(function() {
                     const now = new Date().getTime();
                     const distance = birthdayDate - now;
-
                     const days = Math.floor(distance / (1000 * 60 * 60 * 24));
                     const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
                     const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
                     const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
                     const timerElement = document.getElementById("countdown-timer");
                     
                     if (distance > 0) {
@@ -646,33 +509,8 @@
                     }
                 }, 1000);
             }
-
             startCountdown();
-
-            // 4. Xử lý Phát Nhạc
-            const music = document.getElementById('background-music');
-            const musicToggle = document.getElementById('music-toggle');
-            let isPlaying = false;
-
-            musicToggle.addEventListener('click', () => {
-                if (isPlaying) {
-                    music.pause();
-                    musicToggle.innerHTML = '<i class="fa-solid fa-volume-xmark"></i>';
-                    musicToggle.classList.remove('spin');
-                } else {
-                    music.play().catch(error => {
-                        console.error("Autoplay was prevented:", error);
-                        alert("Trình duyệt đã chặn tự động phát nhạc. Vui lòng bấm vào nút này lần nữa để bật nhạc!");
-                    });
-                    musicToggle.innerHTML = '<i class="fa-solid fa-music"></i>';
-                    musicToggle.classList.add('spin');
-                }
-                isPlaying = !isPlaying;
-            });
         });
-
     </script>
-
 </body>
 </html>
-
