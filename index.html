@@ -23,10 +23,10 @@
 
         html {
             /* KÍCH HOẠT SCROLL SNAP CHO TOÀN TRANG */
-            scroll-snap-type: y mandatory;
-            overflow-y: scroll; /* Cho phép cuộn */
+            scroll-snap-type: y mandatory; /* Bắt buộc dính vào điểm snap */
+            overflow-y: scroll; 
             scroll-behavior: smooth;
-            height: 100%; /* Bắt buộc để snap hoạt động */
+            height: 100%; 
         }
 
         body {
@@ -40,7 +40,8 @@
                               radial-gradient(var(--primary-color) 1px, var(--bg-color) 1px);
             background-size: 20px 20px;
             background-position: 0 0, 10px 10px;
-            height: 100%; /* Bắt buộc */
+            height: 100%; 
+            overflow: hidden; /* Ngăn body cuộn riêng lẻ */
         }
 
         h1, h2, h3 {
@@ -50,7 +51,7 @@
         }
 
         .section {
-            padding: 20px; /* Giảm padding để nội dung không bị đẩy quá xa */
+            padding: 20px; 
             text-align: center;
             position: relative;
             /* QUAN TRỌNG: Thiết lập chiều cao và điểm dính */
@@ -60,9 +61,10 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            scroll-snap-align: start; /* Điểm dừng khi cuộn */
-            scroll-snap-stop: always; /* Bắt buộc dừng lại, không cho cuộn vượt qua */
-            overflow: hidden; /* Ngăn nội dung tràn ra ngoài section */
+            
+            /* ĐIỂM DÍNH QUAN TRỌNG */
+            scroll-snap-align: start; 
+            scroll-snap-stop: always; /* Bắt buộc dừng lại tại đây, không trượt qua */
         }
         
         /* =================================
@@ -114,7 +116,7 @@
         
         .swiper-container {
             width: 100%;
-            height: 100%; /* Chiếm hết chiều cao section */
+            height: 100%; /* Chiếm hết chiều cao section để tránh cuộn bên trong */
             padding-bottom: 30px;
         }
 
@@ -135,7 +137,6 @@
             position: relative;
             width: 90vw !important; 
             max-width: 400px;
-            /* Giới hạn chiều cao tối đa để không bị tràn trên màn hình nhỏ */
             max-height: 80vh; 
             transition: transform 0.5s ease;
             display: flex;
@@ -169,9 +170,7 @@
         /* ẢNH BÊN TRONG KHUNG */
         .photo-card img {
             width: 100%;
-            /* Sử dụng flex-grow để ảnh chiếm phần lớn không gian còn lại */
             flex-grow: 1;
-            /* Chiều cao linh hoạt nhưng có giới hạn tối thiểu/tối đa */
             min-height: 300px;
             max-height: 550px; 
             object-fit: cover; 
@@ -186,7 +185,6 @@
             background: white;
             color: var(--text-color);
             font-weight: 700;
-            /* Đảm bảo caption không bị co quá nhỏ */
             flex-shrink: 0; 
         }
         
