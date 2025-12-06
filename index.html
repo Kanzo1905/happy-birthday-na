@@ -33,7 +33,9 @@
                               radial-gradient(var(--primary-color) 1px, var(--bg-color) 1px);
             background-size: 20px 20px;
             background-position: 0 0, 10px 10px;
-            /* QUAN TRỌNG: Cần cuộn dọc mượt mà */
+            
+            /* QUAN TRỌNG: NGĂN CHẶN CUỘN MẶC ĐỊNH VÀ CUỘN MƯỢT */
+            overflow-y: hidden; /* NGĂN CHẶN XÊ DỊCH KHI VUỐT */
             scroll-behavior: smooth; 
         }
 
@@ -47,7 +49,7 @@
             padding: 60px 20px;
             text-align: center;
             position: relative;
-            /* QUAN TRỌNG: Mỗi mục chiếm toàn bộ chiều cao màn hình */
+            /* Mỗi mục chiếm toàn bộ chiều cao màn hình */
             min-height: 100vh; 
             display: flex;
             flex-direction: column;
@@ -155,8 +157,8 @@
         /* ẢNH BÊN TRONG KHUNG (Hình chữ nhật DỌC LỚN HƠN) */
         .photo-card img {
             width: 100%;
-            /* TĂNG CHIỀU CAO: 500px để làm khung ảnh to hơn */
-            height: 500px; 
+            /* TĂNG CHIỀU CAO: 550px để làm khung ảnh to hơn */
+            height: 550px; 
             object-fit: cover; /* Đảm bảo ảnh không bị méo */
             display: block;
             border-top-left-radius: 10px;
