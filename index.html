@@ -63,7 +63,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            pointer-events: none;
+            pointer-events: none; 
             overflow: hidden;
             z-index: 99;
         }
@@ -71,7 +71,7 @@
         .petal {
             position: absolute;
             background: url('petal.png') center / cover; 
-            background-color: #FFC0CB; 
+            background-color: #FFC0CB;
             border-radius: 50%;
             width: 15px;
             height: 15px;
@@ -122,9 +122,9 @@
             box-shadow: 5px 5px 0px var(--secondary-color);
             padding-bottom: 5px;
             position: relative;
-            /* Cố định kích thước khung ảnh (Phù hợp mobile) */
-            width: 90vw !important; 
-            max-width: 350px; 
+            /* Đã xác định kích thước chung cho cả ảnh kỷ niệm và đồ ăn */
+            width: 90vw !important; /* Chiếm phần lớn màn hình ngang */
+            max-width: 350px;
             transition: transform 0.5s ease;
         }
         
@@ -152,11 +152,11 @@
             z-index: 5;
         }
 
-        /* ẢNH BÊN TRONG KHUNG (Đồng đều) */
+        /* ẢNH BÊN TRONG KHUNG (Hình chữ nhật DỌC) */
         .photo-card img {
             width: 100%;
-            /* Cố định chiều cao ảnh để khung ảnh đồng đều */
-            height: 300px; 
+            /* TẠO TỶ LỆ CHỮ NHẬT DỌC (Ví dụ: 3:4 hoặc 9:12) */
+            height: 400px; 
             object-fit: cover; /* Đảm bảo ảnh không bị méo */
             display: block;
             border-top-left-radius: 10px;
@@ -183,19 +183,18 @@
         }
         
         /* =================================
-           3. Phần Đồ Ăn (Đã loại bỏ style tròn cũ)
+           3. Phần Đồ Ăn (Sử dụng Khung Ảnh Kỷ Niệm)
            ================================= */
         
         .food-photo-container {
-            /* Chỉ dùng container để căn giữa nội dung bên trong slide */
             display: flex;
             flex-direction: column;
             align-items: center;
         }
 
-        /* Ứng dụng photo-card cho cả ảnh đồ ăn để đồng bộ khung */
+        /* Áp dụng lại style nền cho phần Đồ ăn để đồng bộ */
         #food .photo-card {
-            background-color: var(--bg-color); /* Nền nhẹ cho phần đồ ăn */
+            background-color: var(--bg-color); 
             border: 2px solid var(--accent-color);
         }
 
