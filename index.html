@@ -26,7 +26,7 @@
             padding: 0;
             width: 100%;
             height: 100%;
-            overflow: hidden; /* KHÓA CUỘN MẶC ĐỊNH: Web sẽ đứng yên tuyệt đối */
+            overflow: hidden; /* KHÓA CUỘN MẶC ĐỊNH */
             font-family: 'Nunito', sans-serif;
             background-color: var(--bg-color);
             color: var(--text-color);
@@ -71,6 +71,7 @@
             padding: 20px;
             box-sizing: border-box;
             overflow: hidden;
+            position: relative;
         }
         
         /* =================================
@@ -231,6 +232,55 @@
             font-family: 'Dancing Script', cursive; font-size: 1.6em;
             line-height: 1.4; text-align: center; padding: 10px 20px;
         }
+
+        /* =================================
+           5. [MỚI] CSS CHO PHẦN UPDATE SINH NHẬT
+           ================================= */
+        #update-22 {
+            background-color: #fdf5e6; /* Màu kem vintage */
+            background-image: radial-gradient(#FFC0CB 20%, transparent 20%);
+            background-size: 20px 20px;
+        }
+
+        .string {
+            position: absolute; top: 0; width: 2px;
+            background: #bbb; z-index: 1;
+        }
+
+        .polaroid-container {
+            display: flex; justify-content: center; align-items: center;
+            flex-wrap: wrap; gap: 20px; width: 100%; margin-top: 10px;
+        }
+
+        .polaroid-item {
+            background: white;
+            padding: 10px 10px 35px 10px; /* Chừa chỗ viết chữ */
+            box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+            width: 80vw; max-width: 300px;
+            transition: transform 0.4s ease;
+            position: relative; z-index: 2;
+            border: 1px solid #ddd;
+        }
+
+        .polaroid-item img {
+            width: 100%; height: auto; display: block; border: 1px solid #eee;
+        }
+
+        .polaroid-item .p-caption {
+            font-family: 'Dancing Script', cursive; font-size: 1.4em;
+            text-align: center; margin-top: 10px; color: #d35400;
+        }
+
+        .polaroid-item:nth-child(1) { transform: rotate(-4deg); }
+        .polaroid-item:nth-child(2) { transform: rotate(4deg); margin-top: 20px; }
+
+        /* Kẹp giấy */
+        .pin {
+            position: absolute; top: -15px; left: 50%; transform: translateX(-50%);
+            width: 12px; height: 35px; background: #FF6347;
+            border-radius: 10px; box-shadow: 2px 2px 5px rgba(0,0,0,0.2); z-index: 3;
+        }
+
     </style>
 </head>
 <body>
@@ -316,14 +366,44 @@
             </div>
         </section>
 
+        <section id="update-22" class="section">
+            <div class="string" style="left: 30%; height: 100px;"></div>
+            <div class="string" style="left: 70%; height: 80px;"></div>
+
+            <h2 style="margin-top: -20px; font-size: 2.2em;">✨ Sinh Nhật Đáng Nhớ ✨</h2>
+            <p style="text-align: center; color: #555; font-size: 1.1em; margin-bottom: 20px;">
+                Khoảnh khắc này đã được lưu lại mãi mãi!<br>
+                (Ngày 17/12/2025)
+            </p>
+
+            <div class="polaroid-container">
+                <div class="polaroid-item">
+                    <div class="pin"></div>
+                    <img src="sinhnhat_real_1.jpg" alt="Sinh nhật 1">
+                    <div class="p-caption">Điều ước thành hiện thực ✨</div>
+                </div>
+
+                <div class="polaroid-item">
+                    <div class="pin"></div>
+                    <img src="sinhnhat_real_2.jpg" alt="Sinh nhật 2">
+                    <div class="p-caption">Hạnh phúc bên nhau ❤️</div>
+                </div>
+            </div>
+        </section>
         <section id="finale" class="section" style="background-color: var(--primary-color);">
-            <h2>🎊 Đếm Ngược Chương Mới!</h2>
-            <p style="font-size: 1.2em;">Thời khắc món quà đặc biệt đến tay Na còn:</p>
-            <div id="countdown-timer" style="font-size: 2.5em; font-weight: bold; color: white;"></div>
-            <p style="font-size: 1.5em; font-weight: 700; margin-top: 30px;">Tún và Na cùng nhau tạo thêm thật nhiều kỷ niệm đáng yêu nữa nhé! ❤️</p>
+            <h2>🎊 Chương Mới Bắt Đầu!</h2>
+            
+            <div style="font-size: 4em; margin: 20px; animation: pulse 2s infinite;">🚀</div>
+            
+            <p style="font-size: 1.3em; font-weight: 700; margin-top: 10px; padding: 0 20px; text-align: center; color: white;">
+                Cảm ơn Na đã thật hạnh phúc trong ngày đặc biệt này.<br>
+                Tún hứa sẽ làm Na cười nhiều hơn nữa ở tuổi 22! ❤️
+            </p>
         </section>
 
-    </div> <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    </div> 
+    
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
     <script>
         // --- XỬ LÝ ÂM THANH & MỞ QUÀ ---
@@ -357,7 +437,10 @@
 
         // --- XỬ LÝ CUỘN TRANG (FULLPAGE SCROLL) ---
         let currentSection = 0;
-        const totalSections = 5; // 5 section
+        
+        // !!! QUAN TRỌNG: SỐ SECTION ĐÃ TĂNG LÊN 6 !!!
+        const totalSections = 6; 
+        
         let isScrolling = false;
         const container = document.getElementById('main-container');
         
@@ -377,7 +460,7 @@
 
             setTimeout(() => {
                 isScrolling = false;
-            }, 1000); // Thời gian chờ bằng thời gian transition CSS (0.8s) + dư chút
+            }, 1000); 
         }
 
         // Sự kiện lăn chuột (Desktop)
@@ -396,7 +479,6 @@
             let touchEndY = e.changedTouches[0].clientY;
             let diff = touchStartY - touchEndY;
             
-            // Ngưỡng vuốt là 50px
             if (Math.abs(diff) > 50) {
                 if (diff > 0) scrollPage('down');
                 else scrollPage('up');
@@ -412,20 +494,8 @@
         new Swiper(".mySwiperJourney", swiperOptions);
         new Swiper(".mySwiperFood", swiperOptions);
 
-        // --- COUNTDOWN ---
-        const bday = new Date("2025-12-17 00:00:00").getTime();
-        setInterval(() => {
-            const now = new Date().getTime();
-            const dist = bday - now;
-            const d = Math.floor(dist / (1000 * 60 * 60 * 24));
-            const h = Math.floor((dist % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const m = Math.floor((dist % (1000 * 60 * 60)) / (1000 * 60));
-            const s = Math.floor((dist % (1000 * 60)) / 1000);
-            document.getElementById("countdown-timer").innerHTML = dist > 0 ? 
-                `${d}d ${h}h ${m}m ${s}s` : "🎉 Happy Birthday! 🎉";
-        }, 1000);
-
+        // --- COUNTDOWN (ĐÃ TẮT VÌ SINH NHẬT ĐÃ QUA) ---
+        // Phần này đã được loại bỏ để hiển thị lời chúc cuối cùng.
     </script>
 </body>
 </html>
-
