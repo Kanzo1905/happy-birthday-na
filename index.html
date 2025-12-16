@@ -234,9 +234,9 @@
         }
 
         /* =================================
-           5. [MỚI] CSS CHO PHẦN UPDATE SINH NHẬT
+           5. CSS CHO 2 TRANG UPDATE MỚI
            ================================= */
-        #update-22 {
+        .update-section {
             background-color: #fdf5e6; /* Màu kem vintage */
             background-image: radial-gradient(#FFC0CB 20%, transparent 20%);
             background-size: 20px 20px;
@@ -247,37 +247,36 @@
             background: #bbb; z-index: 1;
         }
 
-        .polaroid-container {
-            display: flex; justify-content: center; align-items: center;
-            flex-wrap: wrap; gap: 20px; width: 100%; margin-top: 10px;
-        }
-
-        .polaroid-item {
+        /* Khung ảnh Polaroid đơn */
+        .single-polaroid {
             background: white;
-            padding: 10px 10px 35px 10px; /* Chừa chỗ viết chữ */
-            box-shadow: 0 8px 15px rgba(0,0,0,0.2);
-            width: 80vw; max-width: 300px;
+            padding: 10px 10px 40px 10px; /* Chừa chỗ viết chữ */
+            box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+            width: 85vw; max-width: 350px;
             transition: transform 0.4s ease;
             position: relative; z-index: 2;
             border: 1px solid #ddd;
+            transform: rotate(-3deg); /* Nghiêng nhẹ mặc định */
         }
-
-        .polaroid-item img {
+        
+        .single-polaroid img {
             width: 100%; height: auto; display: block; border: 1px solid #eee;
         }
 
-        .polaroid-item .p-caption {
-            font-family: 'Dancing Script', cursive; font-size: 1.4em;
-            text-align: center; margin-top: 10px; color: #d35400;
+        .single-polaroid .p-caption {
+            font-family: 'Dancing Script', cursive; font-size: 1.6em;
+            text-align: center; margin-top: 15px; color: #d35400;
         }
 
-        .polaroid-item:nth-child(1) { transform: rotate(-4deg); }
-        .polaroid-item:nth-child(2) { transform: rotate(4deg); margin-top: 20px; }
+        /* Hiệu ứng khi hover */
+        .single-polaroid:hover {
+            transform: scale(1.05) rotate(0deg);
+        }
 
         /* Kẹp giấy */
         .pin {
-            position: absolute; top: -15px; left: 50%; transform: translateX(-50%);
-            width: 12px; height: 35px; background: #FF6347;
+            position: absolute; top: -20px; left: 50%; transform: translateX(-50%);
+            width: 15px; height: 40px; background: #FF6347;
             border-radius: 10px; box-shadow: 2px 2px 5px rgba(0,0,0,0.2); z-index: 3;
         }
 
@@ -366,30 +365,36 @@
             </div>
         </section>
 
-        <section id="update-22" class="section">
-            <div class="string" style="left: 30%; height: 100px;"></div>
-            <div class="string" style="left: 70%; height: 80px;"></div>
+        <section id="update-part1" class="section update-section">
+            <div class="string" style="left: 50%; height: 80px;"></div>
 
-            <h2 style="margin-top: -20px; font-size: 2.2em;">✨ Sinh Nhật Đáng Nhớ ✨</h2>
+            <h2 style="margin-top: -20px; font-size: 2.2em;">✨ Khoảnh khắc 17/12 ✨</h2>
             <p style="text-align: center; color: #555; font-size: 1.1em; margin-bottom: 20px;">
-                Khoảnh khắc này đã được lưu lại mãi mãi!<br>
-                (Ngày 17/12/2025)
+                Cập nhật: Điều ước tuổi 22 đã đến...
             </p>
 
-            <div class="polaroid-container">
-                <div class="polaroid-item">
-                    <div class="pin"></div>
-                    <img src="sinhnhat_real_1.jpg" alt="Sinh nhật 1">
-                    <div class="p-caption">Điều ước thành hiện thực ✨</div>
-                </div>
-
-                <div class="polaroid-item">
-                    <div class="pin"></div>
-                    <img src="sinhnhat_real_2.jpg" alt="Sinh nhật 2">
-                    <div class="p-caption">Hạnh phúc bên nhau ❤️</div>
-                </div>
+            <div class="single-polaroid">
+                <div class="pin"></div>
+                <img src="sinhnhat_real_1.jpg" alt="Sinh nhật 1">
+                <div class="p-caption">Tuổi 22 rực rỡ nhé Na! 🎂</div>
             </div>
         </section>
+
+        <section id="update-part2" class="section update-section">
+             <div class="string" style="left: 50%; height: 60px;"></div>
+
+             <h2 style="margin-top: -20px; font-size: 2.2em;">💖 Chúng mình 💖</h2>
+             <p style="text-align: center; color: #555; font-size: 1.1em; margin-bottom: 20px;">
+                Lưu giữ nụ cười này mãi mãi!
+             </p>
+
+             <div class="single-polaroid" style="transform: rotate(3deg);">
+                <div class="pin"></div>
+                <img src="sinhnhat_real_2.jpg" alt="Sinh nhật 2">
+                <div class="p-caption">Hạnh phúc vì có Na bên cạnh ❤️</div>
+            </div>
+        </section>
+
         <section id="finale" class="section" style="background-color: var(--primary-color);">
             <h2>🎊 Chương Mới Bắt Đầu!</h2>
             
@@ -438,8 +443,8 @@
         // --- XỬ LÝ CUỘN TRANG (FULLPAGE SCROLL) ---
         let currentSection = 0;
         
-        // !!! QUAN TRỌNG: SỐ SECTION ĐÃ TĂNG LÊN 6 !!!
-        const totalSections = 6; 
+        // !!! QUAN TRỌNG: TỔNG SỐ SECTION BÂY GIỜ LÀ 7 (5 cũ + 2 mới) !!!
+        const totalSections = 7; 
         
         let isScrolling = false;
         const container = document.getElementById('main-container');
@@ -494,8 +499,6 @@
         new Swiper(".mySwiperJourney", swiperOptions);
         new Swiper(".mySwiperFood", swiperOptions);
 
-        // --- COUNTDOWN (ĐÃ TẮT VÌ SINH NHẬT ĐÃ QUA) ---
-        // Phần này đã được loại bỏ để hiển thị lời chúc cuối cùng.
     </script>
 </body>
 </html>
